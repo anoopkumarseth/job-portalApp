@@ -1,81 +1,121 @@
 <div class="container">
   <h1>Job Portal</h1>
-  @if (!isLoggedIn) {
-  <div class="form">
-    @if (login) {
-
-    <input
-      type="text"
-      [(ngModel)]="loginUserObj.email"
-      name="user"
-      id=""
-      placeholder="email"
-    />
-    <input
-      type="text"
-      name="password"
-      [(ngModel)]="loginUserObj.password"
-      id=""
-      placeholder="password"
-    />
-    <button (click)="loginUser()">Login</button>
-    @if (!isLoggedIn && loginAttempt) {
-    <span style="color: red">Invalid email and pass </span>
-    } } @else {
-
-    <input
-      type="text"
-      [(ngModel)]="userData.name"
-      name="user"
-      id=""
-      placeholder="name"
-    />
-    <input
-      type="text"
-      [(ngModel)]="userData.email"
-      name="user"
-      id=""
-      placeholder="email"
-    />
-    <input
-      type="text"
-      [(ngModel)]="userData.password"
-      name="password"
-      id=""
-      placeholder="select password"
-    />
-    <button (click)="saveData('user')">Submit</button>
-    }
-    <a (click)="login = !login"> Want to {{ login ? "sign up" : "login" }}</a>
-  </div>
-  } @if (isLoggedIn && loginAttempt) {
-  <div class="welcon">
-    welcome to job portal
-
-    <table>
-      <thead>
-        <tr>
-          <th>title</th>
-          <th>description</th>
-          <th>location</th>
-          <th>salary</th>
-          <th>status</th>
-          <th>action</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (item of jobList; track $index) {
-        <tr>
-          <td>{{ item.title }}</td>
-          <td>{{ item.description }}</td>
-          <td>{{ item.location }}</td>
-          <td>{{ item.salary }}</td>
-          <td>{{ item.status }}</td>
-          <td><button [disabled]="!item.status" (click)="applyJob(item.jobId)">Apply</button></td>
-        </tr>
+  <div style="display: flex; gap: 15px;">
+    <div class="left-part" style="flex-grow: 1;">
+      @if (!isLoggedIn) {
+      <div class="form">
+        @if (login) {
+  
+        <input
+          type="text"
+          [(ngModel)]="loginUserObj.email"
+          name="user"
+          id=""
+          placeholder="email"
+        />
+        <input
+          type="text"
+          name="password"
+          [(ngModel)]="loginUserObj.password"
+          id=""
+          placeholder="password"
+        />
+        <button (click)="loginUser()">Login</button>
+        @if (!isLoggedIn && loginAttempt) {
+        <span style="color: red">Invalid email and pass </span>
+        } } @else {
+  
+        <input
+          type="text"
+          [(ngModel)]="userData.name"
+          name="user"
+          id=""
+          placeholder="name"
+        />
+        <input
+          type="text"
+          [(ngModel)]="userData.email"
+          name="user"
+          id=""
+          placeholder="email"
+        />
+        <input
+          type="text"
+          [(ngModel)]="userData.password"
+          name="password"
+          id=""
+          placeholder="select password"
+        />
+        <button (click)="saveData('user')">Submit</button>
         }
-      </tbody>
-    </table>
+        <a (click)="login = !login"> Want to {{ login ? "sign up" : "login" }}</a>
+
+        
+      </div>
+      } @if (isLoggedIn && loginAttempt) {
+      <div class="welcon">
+        welcome to job portal
+  
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>title</th>
+              <th>description</th>
+              <th>location</th>
+              <th>salary</th>
+              <th>status</th>
+              <th>action</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of jobList; track $index) {
+            <tr>
+              <td>{{ item.jobId }}</td>
+              <td>{{ item.title }}</td>
+              <td>{{ item.description }}</td>
+              <td>{{ item.location }}</td>
+              <td>{{ item.salary }}</td>
+              <td>{{ item.status }}</td>
+              <td>
+                <button [disabled]="!item.status" (click)="applyJob(item.jobId)">
+                  Apply
+                </button>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      }
+    </div>
+    <div class="sidebar">
+      <h3>Applied Jobs</h3>
+      @if (appliedJobs.length) { 
+        
+
+        <table>
+          <thead>
+            <tr>
+              <th>applicationID</th>
+              <th>jobID</th>
+              <th>salary</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of appliedJobs; track $index) {
+            <tr>
+              <td>{{ item.applicationID }}</td>
+              <td>{{ item.jobID }}</td>
+              <td>{{ item.salary }}</td>
+              
+            </tr>
+            }
+          </tbody>
+        </table>
+      } @else {
+      <p>No Applied Any Job yet</p>
+      }
+    </div>
   </div>
-  }
 </div>

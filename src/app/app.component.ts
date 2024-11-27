@@ -63,10 +63,31 @@ export class AppComponent {
 
 
   applyJob(applicationId:string){
-    this.loginservice.getJobs().subscribe((data)=>{
-      
+    let payload = {
+      "jobID":applicationId,
+      "userID":"6",
+      "resume":"3",
+      "salary":"4000",
+      "applicationDate":"2024-02-10",
+      "status":1
+  }
+
+    this.loginservice.applyJob(payload).subscribe((data)=>{
+      this.jobList =  this.jobList.filter((job: { jobId: any; }) => job.jobId !== applicationId);
       console.log(data);
-      this.jobList = data
+      alert("Applied for the job")
+      this.appliedJob()
+    })
+  }
+
+
+  appliedJobs:any = []
+  appliedJob(){
+   
+
+    this.loginservice.appliedJob().subscribe((data)=>{
+      console.log(data);
+      this.appliedJobs = data
     })
   }
 }

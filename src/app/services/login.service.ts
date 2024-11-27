@@ -40,7 +40,14 @@ export class LoginService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.post<any>(`${this.apiUrl}/users`, payload, { headers });
+    return this.http.post<any>(`${this.apiUrl}/applications`, payload, { headers });
+  }
+
+  appliedJob(){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.get<any>(`${this.apiUrl}/applications`, { headers });
   }
 
 
