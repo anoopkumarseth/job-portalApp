@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "f1746f6f-8d98-4e94-9dbf-c2e87ff0a2f3",
+		"name": "Job portal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "40052857"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/jobs",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"applicationID\":4,\r\n    \"jobID\":\"4\",\r\n    \"userID\":\"3\",\r\n    \"resume\":5,\r\n    \"salary\":\"50K\",\r\n    \"applicationDate\":\"2024-11-01\",\r\n    \"status\":0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/companies"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/users/2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/users"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/jobs/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/jobs"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"Anoop Seth\",\r\n        \"email\": \"anoop.seth@gmail.com\",\r\n        \"password\": \"123456@13\",\r\n        \"createdAt\": \"2024-11-01\",\r\n        \"isActive\": true,\r\n        \"message\": \"Welcome aboard!\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/users"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/users"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/users/2",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/users/2"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/jobs/2",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/jobs/2"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/jobs",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"title\": \"Financial Consultant\",\r\n        \"description\": \"Provide financial advisory services to clients.\",\r\n        \"location\": \"Ahmedabad\",\r\n        \"companyID\": \"10\",\r\n        \"salary\": \"95000\",\r\n        \"createdAt\": \"2024-02-10\",\r\n        \"status\": false\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/jobs"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/applications",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"jobID\":\"3\",\r\n    \"userID\":\"6\",\r\n    \"resume\":\"3\",\r\n    \"salary\":\"4000\",\r\n    \"applicationDate\":\"2024-02-10\",\r\n    \"status\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/applications"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/users/exists",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"anoop@gmail.com\",\r\n    \"password\": \"123456@13\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/users/exists"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/companies",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"CloudSync Innovations\",\r\n        \"description\": \"Revolutionizing cloud storage and data synchronization.\",\r\n        \"location\": \"Noida\",\r\n        \"website\": \"www.cloudsync.io\",\r\n        \"createdAt\": \"2023-09-05\",\r\n        \"status\": 0\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/companies"
+			},
+			"response": []
+		}
+	]
+}
