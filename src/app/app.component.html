@@ -60,6 +60,7 @@
           <th>location</th>
           <th>salary</th>
           <th>status</th>
+          <th>action</th>
         </tr>
       </thead>
       <tbody>
@@ -70,6 +71,7 @@
           <td>{{ item.location }}</td>
           <td>{{ item.salary }}</td>
           <td>{{ item.status }}</td>
+          <td><button [disabled]="!item.status" (click)="applyJob(item.jobId)">Apply</button></td>
         </tr>
         }
       </tbody>

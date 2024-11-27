@@ -26,7 +26,7 @@ export class AppComponent {
     "message":"22"
   }
   loginUserObj = {
-    "email": "anoop@gmail.com",
+    "email": "anoop.seth@gmail.com",
     "password": "123456@13"
   }
   
@@ -47,13 +47,22 @@ export class AppComponent {
       this.isLoggedIn = data;
       if(data){
         this.getJobs();
-        localStorage.setItem("userDetails", JSON.stringify(this.loginUser))
+        localStorage.setItem("userDetails", JSON.stringify(this.loginUserObj))
       }
     })
   }
 
   jobList:any = []
   getJobs(){
+    this.loginservice.getJobs().subscribe((data)=>{
+      
+      console.log(data);
+      this.jobList = data
+    })
+  }
+
+
+  applyJob(applicationId:string){
     this.loginservice.getJobs().subscribe((data)=>{
       
       console.log(data);
